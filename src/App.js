@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Login from './Login/Login/Login';
+import Register from './Login/Register/Register';
 import AllProducts from './Pages/AllProducts/AllProducts';
 import Home from './Pages/Home/Home/Home';
 import SingleDetail from './Pages/SingleDetail/SingleDetail';
@@ -14,7 +15,8 @@ function App() {
           <Route path="/home" element={<Home/>}></Route>
           <Route path="/allProducts" element={<AllProducts/>}></Route>
           <Route path="/singleDetail/:_id" element={<SingleDetail/>}></Route>
-          <Route path="/login" element={<Login/>}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/Register" element={<Register />}></Route>
         </Routes>
       </Router>
     </div>

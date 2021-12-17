@@ -7,6 +7,7 @@ const SingleDetail = () => {
     const {_id} = useParams();
     const [singleDetail, setSingleDetail] = useState({});
     const [userInfo, setUserInfo] = useState({});
+    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         fetch(`http://localhost:5000/products/${_id}`)
@@ -20,10 +21,35 @@ const SingleDetail = () => {
         const newUserInfo = {...userInfo};
         newUserInfo[field] = value;
         setUserInfo(newUserInfo);
-        console.log(newUserInfo);
     }
 
     const handleFormSubmit = (e) => {
+        const order = {
+            productName: singleDetail.name,
+            img: singleDetail.img,
+            displayName: userInfo.name,
+            phone: userInfo.phone,
+            address: userInfo.address,
+            email: userInfo.email,
+            price: singleDetail.price,
+            description: singleDetail.description,
+            status: 'PENDING'
+
+        }
+        // send to database
+        fetch('http://localhost:5000/order', {
+            method: 'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.insertedId){
+                setSuccess(true);
+            }
+        })
         e.preventDefault();
     }
     return (
@@ -113,6 +139,23 @@ const SingleDetail = () => {
                             </div>
                         </div>
                         </form>
+                        {success && <div class="bg-green-100 rounded-md p-3 flex mb-5 w-3/4">
+                    <svg
+                        class="stroke-2 stroke-current text-green-600 h-8 w-8 mr-2 flex-shrink-0"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    >
+                        <path d="M0 0h24v24H0z" stroke="none" />
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M9 12l2 2 4-4" />
+                    </svg>
+
+                    <div class="text-green-700">
+                        <div class="font-bold text-xl">Your order has been successful!</div>
+                    </div>
+                </div>}
                 </div>
             </div>
             <Footer></Footer>
