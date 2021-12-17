@@ -23,7 +23,7 @@ const Banner = () => {
             <NavLink to='/allProducts'>
             <button
                 className="px-3 bg-pink-500 rounded py-2 px-4 text-sm uppercase font-bold leading-snug text-white hover:opacity-75"
-                >Explore now
+                >More Products
             </button>
             </NavLink>
         </div>

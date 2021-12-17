@@ -56,7 +56,7 @@ const Header = () => {
                 <button
                   className="px-3 bg-white rounded-md py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
                 >
-                  <i class="fas fa-sign-in-alt text-lg leading-lg text-gray opacity-75"></i><span className="ml-2">Sign In</span>
+                  <i className="fas fa-sign-in-alt text-lg leading-lg text-gray opacity-75"></i><span className="ml-2">Sign In</span>
                 </button>
                 </NavLink>
               </li>

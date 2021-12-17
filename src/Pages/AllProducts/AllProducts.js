@@ -8,7 +8,12 @@ const AllProducts = () => {
 
     useEffect( ()=> {
         fetch('http://localhost:5000/products')
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(res.statusText)
+              }
+            return res.json()
+        })
         .then(data => setAllProducts(data))
     }, [])
     return (
