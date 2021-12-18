@@ -14,7 +14,7 @@ import useAuth from '../../../hooks/useAuth';
 const drawerWidth = 200;
 
 function Dashboard(props) {
-    const {logOut} = useAuth();
+    const { logOut, admin } = useAuth();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -27,13 +27,18 @@ function Dashboard(props) {
       <Toolbar />
       <Divider />
       {/* link here */}
-      <NavLink to="/Home">Home</NavLink> <br />
-      <NavLink to="/dashboard/myOrders">My Orders</NavLink> <br />
-      <NavLink to="/dashboard/review">Review</NavLink> <br />
-      <NavLink to="/dashboard/addProduct">Add Product</NavLink> <br />
-      <NavLink to="/dashboard/manageProduct">Manage Products</NavLink> <br />
-      <NavLink to="/dashboard/manageOrders">Manage Orders</NavLink> <br />
-      <NavLink to="/dashboard/makeAdmin">Make Admin</NavLink>
+      <NavLink to="/Home"><i className="fas fa-home"></i> Home</NavLink> <br />
+      <Divider />
+      {!admin && <Box>
+        <NavLink to="/dashboard/myOrders"><i className="fab fa-first-order-alt"></i> My Orders</NavLink> <br />
+        <NavLink to="/dashboard/review"><i className="fas fa-comments"></i> Review</NavLink> <br />
+        </Box>}
+      {admin && <Box>
+        <NavLink to="/dashboard/addProduct"><i className="far fa-plus-square"></i> Add Product</NavLink> <br />
+        <NavLink to="/dashboard/manageProduct"><i className="fas fa-tasks"></i> Manage Products</NavLink> <br />
+        <NavLink to="/dashboard/manageOrders"><i className="fab fa-product-hunt"></i> Manage Orders</NavLink> <br />
+        <NavLink to="/dashboard/makeAdmin"><i className="fas fa-user-shield"></i> Make Admin</NavLink>
+        </Box>}
       <Divider />
       <button onClick={logOut}
         className="px-3 bg-blue-400 rounded-md py-2 my-3 mx-auto flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75">
