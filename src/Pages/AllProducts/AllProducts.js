@@ -19,7 +19,7 @@ const AllProducts = () => {
     return (
         <div>
             <Header></Header>
-            <h1 className="text-3xl font-bold my-10">Our All Products</h1>
+            <h1 className="text-3xl font-bold my-10 text-blue-400">Our All Products</h1>
             <div className="container mx-auto mb-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {

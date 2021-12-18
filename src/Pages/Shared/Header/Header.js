@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const Header = () => {
+  const {user, logOut} = useAuth();
     const [navbarOpen, setNavbarOpen] = React.useState(false);
     return (
         <>
@@ -43,15 +45,29 @@ const Header = () => {
               </li>
 
               <li className="nav-item">
+                <NavLink to="/dashboard">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                   href="#pablo"
                 >
                   <i className="fas fa-columns text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Dashboard</span>
                 </a>
+                </NavLink>
               </li>
-
               <li className="nav-item">
+                <a
+                  className="px-3 py-2 flex items-center text-xs font-bold leading-snug text-white hover:opacity-75"
+                  href="#pablo"
+                >
+                  <i className="fas fa-user text-lg leading-lg text-white opacity-75"></i><span className="ml-2">{user.email}</span>
+                </a>
+              </li>
+              
+              {user.email ? <button onClick={logOut}
+                  className="px-3 bg-blue-400 rounded-md py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
+                >
+                  <i className="fas fa-sign-out-alt text-lg leading-lg text-gray opacity-75"></i><span className="ml-2">logout</span>
+                </button> : <li className="nav-item">
                 <NavLink to="/login">
                 <button
                   className="px-3 bg-white rounded-md py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
@@ -59,7 +75,7 @@ const Header = () => {
                   <i className="fas fa-sign-in-alt text-lg leading-lg text-gray opacity-75"></i><span className="ml-2">Sign In</span>
                 </button>
                 </NavLink>
-              </li>
+              </li>}
 
             </ul>
           </div>

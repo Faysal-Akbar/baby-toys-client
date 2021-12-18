@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import useAuth from '../../hooks/useAuth';
 import Footer from '../Home/Footer/Footer';
 import Header from '../Shared/Header/Header';
 
 const SingleDetail = () => {
+    const { user } = useAuth();
     const {_id} = useParams();
     const [singleDetail, setSingleDetail] = useState({});
     const [userInfo, setUserInfo] = useState({});
@@ -85,7 +87,7 @@ const SingleDetail = () => {
                             </label>
                             </div>
                             <div class="md:w-2/3">
-                            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-400" id="inline-full-name" type="text" placeholder="Your Name"
+                            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-400" id="inline-full-name" type="text"
                             name="name"
                             onBlur={handleOnBlur}
                             />
@@ -98,7 +100,7 @@ const SingleDetail = () => {
                             </label>
                             </div>
                             <div class="md:w-2/3">
-                            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-400" id="inline-password" type="email" placeholder="Email Address"
+                            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-400" id="inline-password" type="email"
                             name="email"
                             onBlur={handleOnBlur}
                             />
