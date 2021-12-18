@@ -13,7 +13,7 @@ const ManageProduct = () => {
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://boiling-earth-11841.herokuapp.com/products')
         .then(res => res.json())
         .then(data => setAllProducts(data))
     }, []);

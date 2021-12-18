@@ -7,7 +7,7 @@ const AllProducts = () => {
     const [allProducts, setAllProducts] = useState([]);
 
     useEffect( ()=> {
-        fetch('http://localhost:5000/products')
+        fetch('https://boiling-earth-11841.herokuapp.com/products')
         .then(res => {
             if (!res.ok) {
                 throw new Error(res.statusText)

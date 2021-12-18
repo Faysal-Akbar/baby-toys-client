@@ -12,7 +12,7 @@ const SingleDetail = () => {
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${_id}`)
+        fetch(`https://boiling-earth-11841.herokuapp.com/products/${_id}`)
         .then(res => res.json())
         .then(data => setSingleDetail(data))
     })
@@ -39,7 +39,7 @@ const SingleDetail = () => {
 
         }
         // send to database
-        fetch('http://localhost:5000/order', {
+        fetch('https://boiling-earth-11841.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type':'application/json'
